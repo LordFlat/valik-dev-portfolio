@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", monospace;
+}
+
+@layer base {
+  * {
+    border-color: rgba(168, 85, 247, 0.12);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg-main text-ink-white antialiased;
+    background-image:
+      radial-gradient(60rem 60rem at 80% -10%, rgba(124, 58, 237, 0.12), transparent 60%),
+      radial-gradient(50rem 50rem at 0% 10%, rgba(168, 85, 247, 0.08), transparent 55%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    background: rgba(168, 85, 247, 0.35);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-neon-purple/20 bg-card backdrop-blur-md;
+  }
+  .glow-text {
+    text-shadow: 0 0 24px rgba(168, 85, 247, 0.55);
+  }
+  .neon-border {
+    @apply border border-neon-purple/25;
+  }
+  /* Hide scrollbars on horizontal gallery / carousel rails */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Subtle moving grid backdrop used in heroes */
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(168, 85, 247, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+}

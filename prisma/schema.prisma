@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  shortDescription String
+  fullDescription  String?
+
+  category         String?
+  tags             String[]
+  techStack        String[]
+  features         String[]
+
+  problem          String?
+  solution         String?
+  impact           String?
+
+  coverImage       String?
+  galleryImages    String[]
+
+  githubUrl        String?
+  liveDemoUrl      String?
+
+  featured         Boolean  @default(false)
+  published        Boolean  @default(false)
+  sortOrder        Int      @default(0)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([published, featured, sortOrder])
+}
+
+model SiteContent {
+  id                  String   @id @default(cuid())
+
+  siteName            String   @default("WorkFlow.dev")
+  logoText            String   @default("WorkFlow.dev")
+
+  heroBadge           String?
+  heroTitle           String?
+  heroSubtitle        String?
+  primaryButtonText   String?
+  secondaryButtonText String?
+
+  aboutTitle          String?
+  aboutText           String?
+
+  contactEmail        String?
+  githubUrl           String?
+  linkedinUrl         String?
+  telegramUrl         String?
+
+  seoTitle            String?
+  seoDescription      String?
+
+  updatedAt           DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([read, createdAt])
+}

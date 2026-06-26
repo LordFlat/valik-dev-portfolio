@@ -14,7 +14,7 @@ const fraunces = Fraunces({
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getSiteContent();
   const title =
-    site.seoTitle || "Valentyn.dev — Websites, Landing Pages and Digital Tools";
+    site.seoTitle || "Valentyn Studio — Websites, Landing Pages and Digital Tools";
   const description =
     site.seoDescription ||
     "Premium websites, landing pages, and simple automation tools for small businesses, creators, and practical workflows.";

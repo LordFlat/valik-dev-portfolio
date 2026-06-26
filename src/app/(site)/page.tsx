@@ -9,7 +9,7 @@ import { sameAsLinks } from "@/lib/social";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: { absolute: "Valentyn.dev — Websites that help businesses get chosen" },
+  title: { absolute: "Valentyn Studio — Websites that help businesses get chosen" },
   description:
     "I help small businesses, creators, and local teams turn a basic online presence into a clean, premium website that builds trust and brings more enquiries.",
   alternates: { canonical: "/" },

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Wordmark } from "@/components/site/Wordmark";
 
 const links = [
   { href: "/projects", label: "Work" },
@@ -29,11 +30,10 @@ export function Navbar({ logoText }: { logoText: string }) {
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6">
         <Link
           href="/"
-          className="text-lg font-semibold tracking-tight text-charcoal"
+          className="text-lg font-semibold text-charcoal"
           onClick={() => setOpen(false)}
         >
-          {logoText}
-          <span className="text-accent">.</span>
+          <Wordmark text={logoText} />
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">

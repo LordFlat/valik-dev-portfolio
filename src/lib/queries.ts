@@ -4,8 +4,8 @@ import { prisma } from "./prisma";
 /** Default site content used when the DB has no row yet (keeps pages rendering). */
 export const DEFAULT_SITE_CONTENT = {
   id: "default",
-  siteName: "Valentyn.dev",
-  logoText: "Valentyn.dev",
+  siteName: "Valentyn Studio",
+  logoText: "Valentyn Studio",
   heroBadge: "Websites · Landing Pages · Simple Tools",
   heroTitle: "Beautiful websites for businesses that want to be chosen.",
   heroSubtitle:
@@ -22,7 +22,7 @@ export const DEFAULT_SITE_CONTENT = {
   instagramUrl: "",
   facebookUrl: "",
   whatsappUrl: "",
-  seoTitle: "Valentyn.dev — Websites, Landing Pages and Digital Tools",
+  seoTitle: "Valentyn Studio — Websites, Landing Pages and Digital Tools",
   seoDescription:
     "Premium websites, landing pages, and simple automation tools for small businesses, creators, and practical workflows.",
   updatedAt: new Date(),

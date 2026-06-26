@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "A selection of websites, landing pages, portfolio systems, and simple digital tools built around clarity, trust, and practical business value.",
   alternates: { canonical: "/projects" },
   openGraph: {
-    title: "Selected Work — Valentyn.dev",
+    title: "Selected Work — Valentyn Studio",
     description:
       "Websites, landing pages, and simple digital tools built around clarity, trust, and practical business value.",
     url: "/projects",

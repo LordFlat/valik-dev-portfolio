@@ -21,7 +21,7 @@ export async function generateMetadata({
   const description =
     project.shortDescription ||
     project.impact ||
-    "A case study by Valentyn.dev.";
+    "A case study by Valentyn Studio.";
   const canonical = `/projects/${project.slug}`;
 
   return {
@@ -29,7 +29,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical },
     openGraph: {
-      title: `${project.title} — Valentyn.dev`,
+      title: `${project.title} — Valentyn Studio`,
       description,
       type: "website",
       url: canonical,

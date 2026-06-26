@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Learn about Valentyn, a UK-based creator building clean websites, landing pages, and simple workflow tools for small businesses and practical projects.",
   alternates: { canonical: "/about" },
-  openGraph: { title: "About — Valentyn.dev", url: "/about" },
+  openGraph: { title: "About — Valentyn Studio", url: "/about" },
 };
 
 const values = [

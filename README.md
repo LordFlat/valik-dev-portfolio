@@ -1,6 +1,6 @@
-# Valentyn.dev
+# Valentyn Studio
 
-A **light, premium web-studio portfolio + lightweight CMS** for a UK-based web designer & automation developer (Valentyn Varych).
+A **light, premium web-studio portfolio + lightweight CMS** for a UK-based web designer & automation developer (Valentyn Varych). Public brand: **Valentyn Studio** (domain: valentyn.studio).
 
 The public site positions the brand around helping small businesses look better online — clean websites, landing pages, and simple digital tools. It has an editorial hero, selected-work case studies, services, a simple process, an About page and a conversion-focused Contact page. A protected `/admin` panel lets you manage everything — projects, site content, social links and contact messages — **without touching code**.
 
@@ -65,7 +65,7 @@ Then fill in `.env`:
   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
   ```
 - **`NEXTAUTH_URL`** — legacy URL kept for backwards compatibility (`http://localhost:3000` locally).
-- **`NEXT_PUBLIC_SITE_URL`** — the public site URL used for canonical links, sitemap, robots, OpenGraph and JSON-LD. `http://localhost:3000` locally; `https://work-flow-dev.vercel.app` (or your custom domain) in production.
+- **`NEXT_PUBLIC_SITE_URL`** — the public site URL used for canonical links, sitemap, robots, OpenGraph and JSON-LD. `http://localhost:3000` locally; `https://valentyn.studio` (your custom domain, or the `*.vercel.app` URL until connected) in production.
 - **`ADMIN_EMAIL`** — the email you'll log in with.
 - **`ADMIN_PASSWORD_HASH`** — a bcrypt hash of your admin password (see next step).
 

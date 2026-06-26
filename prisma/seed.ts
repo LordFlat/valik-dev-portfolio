@@ -3,8 +3,8 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const siteContent = {
-  siteName: "Valentyn.dev",
-  logoText: "Valentyn.dev",
+  siteName: "Valentyn Studio",
+  logoText: "Valentyn Studio",
   heroBadge: "Websites · Landing Pages · Simple Tools",
   heroTitle: "Beautiful websites for businesses that want to be chosen.",
   heroSubtitle:
@@ -21,7 +21,7 @@ const siteContent = {
   instagramUrl: "",
   facebookUrl: "",
   whatsappUrl: "",
-  seoTitle: "Valentyn.dev — Websites, Landing Pages and Digital Tools",
+  seoTitle: "Valentyn Studio — Websites, Landing Pages and Digital Tools",
   seoDescription:
     "Premium websites, landing pages, and simple automation tools for small businesses, creators, and practical workflows.",
 };
@@ -86,7 +86,7 @@ const projects = [
     sortOrder: 2,
   },
   {
-    title: "Valentyn.dev Portfolio CMS",
+    title: "Valentyn Studio Portfolio CMS",
     slug: "valentyn-portfolio-cms",
     shortDescription:
       "A live, editable portfolio with an admin panel, image uploads, project pages, and contact messages.",

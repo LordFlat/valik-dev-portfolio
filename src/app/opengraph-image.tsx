@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Valentyn.dev — Websites, landing pages and simple digital tools.";
+export const alt = "Valentyn Studio — Websites, landing pages and simple digital tools.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -22,8 +22,8 @@ export default async function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", fontSize: 34, color: "#111111" }}>
-          <span style={{ fontWeight: 700 }}>Valentyn.dev</span>
-          <span style={{ color: "#C2502E", fontWeight: 700 }}>.</span>
+          <span style={{ fontWeight: 700 }}>Valentyn&nbsp;</span>
+          <span style={{ color: "#C2502E", fontWeight: 700 }}>Studio</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Tell me about your website, landing page, redesign, or automation idea. I'll help you shape it into a cleaner digital experience.",
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Start a Project — Valentyn.dev", url: "/contact" },
+  openGraph: { title: "Start a Project — Valentyn Studio", url: "/contact" },
 };
 
 export default async function ContactPage() {
@@ -26,7 +26,7 @@ export default async function ContactPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Start a Project — Valentyn.dev",
+    name: "Start a Project — Valentyn Studio",
     url: absoluteUrl("/contact"),
   };
 

@@ -27,20 +27,20 @@ export function TagInput({
   const remove = (i: number) => setItems(items.filter((_, idx) => idx !== i));
 
   return (
-    <div className="rounded-lg border border-white/10 bg-bg-secondary/60 p-2 focus-within:border-neon-purple/60">
+    <div className="rounded-lg border border-white/10 bg-bg-secondary/60 p-2 focus-within:border-white/30">
       <input type="hidden" name={name} value={items.join(", ")} />
       <div className="flex flex-wrap gap-2">
         {items.map((item, i) => (
           <span
             key={item + i}
-            className="inline-flex items-center gap-1.5 rounded-md border border-neon-purple/30 bg-neon-purple/10 px-2 py-1 text-xs text-neon-soft"
+            className="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/[0.06] px-2 py-1 text-xs text-ink-white"
           >
             {item}
             <button
               type="button"
               onClick={() => remove(i)}
               aria-label={`Remove ${item}`}
-              className="text-neon-soft/60 hover:text-white"
+              className="text-ink-muted hover:text-white"
             >
               ×
             </button>

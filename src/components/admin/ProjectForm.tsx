@@ -135,11 +135,11 @@ export function ProjectForm({
         </Field>
       </Section>
 
-      <Section title="Tags & stack">
+      <Section title="Project Details">
         <Field label="Tags" hint="press Enter to add">
           <TagInput name="tags" defaultValue={defaults.tags} placeholder="Python, Charts, Signals" />
         </Field>
-        <Field label="Tech stack" hint="press Enter to add">
+        <Field label="Tech stack" hint="internal only — not shown on the public page">
           <TagInput name="techStack" defaultValue={defaults.techStack} placeholder="Python, SQLite, Telegram Bot" />
         </Field>
         <Field label="Features (what it does)" hint="press Enter to add">
@@ -209,8 +209,8 @@ export function ProjectForm({
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <fieldset className="rounded-2xl border border-white/10 bg-card p-5 backdrop-blur-md">
-      <legend className="px-2 text-sm font-medium uppercase tracking-[0.2em] text-neon-soft/70">
+    <fieldset className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+      <legend className="px-2 text-sm font-semibold text-ink-white">
         {title}
       </legend>
       <div className="mt-3 flex flex-col gap-4">{children}</div>

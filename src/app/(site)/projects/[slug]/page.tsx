@@ -117,33 +117,16 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         </section>
       )}
 
-      {/* What was built */}
+      {/* What it does */}
       {project.features.length > 0 && (
         <section className="mt-16">
-          <SectionLabel>What was built</SectionLabel>
+          <SectionLabel>What it does</SectionLabel>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {project.features.map((f) => (
               <div key={f} className="flex items-start gap-3 rounded-2xl border border-line bg-paper-soft p-5">
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
                 <span className="text-charcoal">{f}</span>
               </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Built with — quiet technical detail */}
-      {project.techStack.length > 0 && (
-        <section className="mt-16">
-          <SectionLabel>Built with</SectionLabel>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.techStack.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-charcoal/12 px-3 py-1 text-xs text-stone"
-              >
-                {t}
-              </span>
             ))}
           </div>
         </section>

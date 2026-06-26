@@ -46,7 +46,7 @@ export function Footer({ site }: { site: SiteContentData }) {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-xs text-stone sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 Valentyn Varych</span>
+          <span>© 2026 Valentyn Studio</span>
           <span>Websites · Landing Pages · Simple Tools</span>
         </div>
       </div>

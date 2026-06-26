@@ -1,99 +1,80 @@
 import type { Metadata } from "next";
-import { Badge } from "@/components/ui/Badge";
+import { SiteLink } from "@/components/site/SiteLink";
 import { getSiteContent } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "I build practical tools for real workflow problems.",
+  description:
+    "Learn about Valentyn, a UK-based creator building clean websites, landing pages, and simple workflow tools for small businesses and practical projects.",
+  alternates: { canonical: "/about" },
+  openGraph: { title: "About — Valentyn.dev", url: "/about" },
 };
 
-const whatIBuild = [
-  "Internal tools",
-  "Automation scripts",
-  "Telegram bots",
-  "Analytics dashboards",
-  "AI workflows",
-];
-
-const howIThink = [
-  "Find the messy process",
-  "Structure the logic",
-  "Build a useful tool",
-  "Improve from real feedback",
-];
-
-const stack = [
-  "Python", "FastAPI", "SQLite", "PostgreSQL", "SQLAlchemy", "Telegram Bot API",
-  "API Integration", "HTML", "CSS", "Jinja2", "Git", "GitHub",
-  "Data Visualization", "Automation Scripts", "Workflow Design", "AI Tools",
+const values = [
+  {
+    title: "Clarity",
+    text: "Visitors should understand what you offer and what to do next within seconds.",
+  },
+  {
+    title: "Trust",
+    text: "Clean design, real content, and a confident layout make a business feel credible.",
+  },
+  {
+    title: "Useful design",
+    text: "Every section earns its place — design serves the business goal, not decoration.",
+  },
+  {
+    title: "Simple systems",
+    text: "Tools and automations should remove manual work, not add new complexity.",
+  },
 ];
 
 export default async function AboutPage() {
   const site = await getSiteContent();
 
   return (
-    <div className="mx-auto max-w-4xl px-5 py-16">
+    <div className="mx-auto max-w-4xl px-5 py-20 sm:px-6 sm:py-28">
       <section>
-        <Badge>About</Badge>
-        <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-ink-white sm:text-5xl">
-          I build practical tools for real workflow problems.
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-accent">About</p>
+        <h1 className="display-balance mt-6 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-charcoal sm:text-6xl">
+          I build websites and tools that make messy business ideas easier to understand.
         </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">{site.aboutText}</p>
+        <div className="mt-8 max-w-2xl space-y-5 text-lg leading-relaxed text-stone">
+          <p>{site.aboutText}</p>
+          <p>
+            My background in real operations helps me understand messy processes, unclear
+            communication, and manual work. I use that experience to create websites and tools
+            that feel clear, useful, and easy to manage.
+          </p>
+        </div>
       </section>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2">
-        <Panel title="What I build">
-          <ul className="space-y-2.5">
-            {whatIBuild.map((i) => (
-              <li key={i} className="flex items-center gap-2.5 text-ink-white">
-                <span className="h-1.5 w-1.5 rounded-full bg-neon-purple" />
-                {i}
-              </li>
-            ))}
-          </ul>
-        </Panel>
-
-        <Panel title="How I think">
-          <ol className="space-y-3">
-            {howIThink.map((step, i) => (
-              <li key={step} className="flex items-start gap-3 text-ink-white">
-                <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-md border border-neon-purple/30 bg-neon-purple/10 font-mono text-xs text-neon-soft">
-                  {i + 1}
-                </span>
-                {step}
-              </li>
-            ))}
-          </ol>
-        </Panel>
-      </div>
-
-      <section id="stack" className="mt-14 scroll-mt-24">
-        <Panel title="Stack">
-          <div className="flex flex-wrap gap-2">
-            {stack.map((t) => (
-              <span
-                key={t}
-                className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm text-ink-muted transition-colors hover:border-neon-purple/40 hover:text-ink-white"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </Panel>
+      <section className="mt-16">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-charcoal">
+          What I care about
+        </h2>
+        <div className="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+          {values.map((v) => (
+            <div key={v.title} className="border-t border-charcoal/15 pt-5">
+              <h3 className="text-lg font-semibold text-charcoal">{v.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone">{v.text}</p>
+            </div>
+          ))}
+        </div>
       </section>
-    </div>
-  );
-}
 
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-card p-6 backdrop-blur-md">
-      <h2 className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-neon-soft/70">
-        {title}
-      </h2>
-      {children}
+      <section className="mt-16 border-t border-line pt-10">
+        <div className="flex flex-wrap items-center gap-3">
+          <SiteLink href="/contact" arrow>
+            Start a project
+          </SiteLink>
+          <SiteLink href="/projects" variant="secondary">
+            View work
+          </SiteLink>
+        </div>
+      </section>
     </div>
   );
 }

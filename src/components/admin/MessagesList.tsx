@@ -12,6 +12,7 @@ type Message = {
   id: string;
   name: string;
   email: string;
+  projectType: string | null;
   message: string;
   read: boolean;
   createdAt: string;
@@ -50,7 +51,14 @@ export function MessagesList({ messages }: { messages: Message[] }) {
                 {m.email}
               </a>
             </div>
-            <span className="text-xs text-ink-muted">{formatDate(m.createdAt)}</span>
+            <div className="flex items-center gap-2 text-xs text-ink-muted">
+              {m.projectType && (
+                <span className="rounded-full border border-neon-purple/30 bg-neon-purple/10 px-2.5 py-0.5 text-neon-soft">
+                  {m.projectType}
+                </span>
+              )}
+              <span>{formatDate(m.createdAt)}</span>
+            </div>
           </div>
 
           <p className="mt-3 whitespace-pre-wrap text-sm text-ink-muted">{m.message}</p>

@@ -1,54 +1,57 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { SocialTextLinks } from "@/components/site/SocialLinks";
+import { JsonLd } from "@/components/site/JsonLd";
 import { getSiteContent } from "@/lib/queries";
+import { buildSocialLinks } from "@/lib/social";
+import { absoluteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Let's build something useful.",
+  title: "Start a Project",
+  description:
+    "Tell me about your website, landing page, redesign, or automation idea. I'll help you shape it into a cleaner digital experience.",
+  alternates: { canonical: "/contact" },
+  openGraph: { title: "Start a Project — Valentyn.dev", url: "/contact" },
 };
 
 export default async function ContactPage() {
   const site = await getSiteContent();
+  const socials = buildSocialLinks(site);
+  const quick = socials.filter((s) =>
+    ["instagram", "whatsapp", "telegram", "email"].includes(s.key),
+  );
 
-  const links = [
-    { label: "GitHub", href: site.githubUrl },
-    { label: "LinkedIn", href: site.linkedinUrl },
-    { label: "Telegram", href: site.telegramUrl },
-    { label: "Email", href: site.contactEmail ? `mailto:${site.contactEmail}` : "" },
-  ].filter((l) => l.href);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Start a Project — Valentyn.dev",
+    url: absoluteUrl("/contact"),
+  };
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16">
+    <div className="mx-auto max-w-3xl px-5 py-20 sm:px-6 sm:py-28">
+      <JsonLd data={jsonLd} />
+
       <header>
-        <h1 className="text-4xl font-bold tracking-tight text-ink-white sm:text-5xl">
-          Let&apos;s build something useful.
+        <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-charcoal sm:text-6xl">
+          Tell me what you want to improve.
         </h1>
-        <p className="mt-4 max-w-xl text-lg text-ink-muted">
-          I&apos;m open to junior developer roles, automation projects, and practical workflow
-          tools.
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-stone">
+          Send me your current website, Instagram, or idea. I&apos;ll help you think through a
+          cleaner direction.
         </p>
       </header>
 
-      <div className="mt-10 rounded-2xl border border-white/10 bg-card p-6 backdrop-blur-md sm:p-8">
+      <div className="mt-12 rounded-[1.75rem] border border-line bg-paper-soft p-6 sm:p-9">
         <ContactForm />
       </div>
 
-      {links.length > 0 && (
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <span className="text-sm text-ink-muted">Or reach me on</span>
-          {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href!}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-ink-muted transition-all hover:border-neon-purple/40 hover:text-neon-soft"
-            >
-              {l.label}
-            </a>
-          ))}
+      {quick.length > 0 && (
+        <div className="mt-10 rounded-2xl border border-line bg-paper-deep/50 p-6">
+          <p className="text-sm font-medium text-charcoal">Prefer a quick message?</p>
+          <SocialTextLinks links={quick} className="mt-3" />
         </div>
       )}
     </div>

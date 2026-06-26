@@ -3,42 +3,51 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const siteContent = {
-  siteName: "WorkFlow.dev",
-  logoText: "WorkFlow.dev",
-  heroBadge: "BUILD • AUTOMATE • SCALE",
-  heroTitle: "Automation that makes work easier",
+  siteName: "Valentyn.dev",
+  logoText: "Valentyn.dev",
+  heroBadge: "Websites · Landing Pages · Simple Tools",
+  heroTitle: "Beautiful websites for businesses that want to be chosen.",
   heroSubtitle:
-    "I build Python automation, analytics, and AI-powered tools that solve real workflow problems.",
+    "I help local businesses, creators, and small teams turn a basic online presence into a clean, premium website that builds trust and brings more enquiries.",
   primaryButtonText: "View Work",
-  secondaryButtonText: "Contact Me",
-  aboutTitle: "Practical tools for real workflows.",
+  secondaryButtonText: "Start a Project",
+  aboutTitle: "Clear websites and simple tools for real business problems.",
   aboutText:
-    "I'm Valentyn Varych, a beginner developer focused on Python, automation, analytics, and AI-powered tools. My background in real operational work helps me notice messy processes and turn them into simple digital systems.",
+    "I'm Valentyn, based in the UK. I build clean landing pages, websites, and practical digital tools for small businesses and real workflows. My background in operations helps me understand messy processes and turn them into clearer digital experiences.",
   contactEmail: "",
   githubUrl: "",
   linkedinUrl: "",
   telegramUrl: "",
-  seoTitle: "WorkFlow.dev — Python Automation Portfolio",
+  instagramUrl: "",
+  facebookUrl: "",
+  whatsappUrl: "",
+  seoTitle: "Valentyn.dev — Websites, Landing Pages and Digital Tools",
   seoDescription:
-    "Portfolio of Python automation, analytics, and AI workflow projects by Valentyn Varych.",
+    "Premium websites, landing pages, and simple automation tools for small businesses, creators, and practical workflows.",
 };
 
 const projects = [
   {
-    title: "Market Risk Oracle",
-    slug: "market-risk-oracle",
-    shortDescription: "Crypto signals made readable.",
+    title: "Local Business Landing Page",
+    slug: "local-business-landing-page",
+    shortDescription:
+      "A clean landing page designed to make a small business look more trustworthy and easier to contact.",
     fullDescription:
-      "A crypto analytics tool that collects market analysis results, generates chart summaries, tracks watchlists, and reviews how signals performed over time.",
-    category: "Analytics",
-    tags: ["Python", "Charts", "Signals"],
-    techStack: ["Python", "SQLite", "Technical Analysis", "Telegram Bot"],
-    features: ["Signal tracking", "Watchlist", "Chart generation", "Outcome stats"],
-    problem: "Manual market analysis is repetitive and difficult to review later.",
+      "A premium one-page website concept for a local service business — built to communicate the offer clearly, build trust, and turn visitors into enquiries.",
+    category: "Landing Page",
+    tags: ["Landing Page", "Local Business", "Conversion"],
+    techStack: ["Next.js", "Tailwind CSS", "Responsive design"],
+    features: [
+      "Clear hero and offer",
+      "Trust-building sections",
+      "Strong call to action",
+      "Mobile-first layout",
+    ],
+    problem:
+      "Many small businesses have an unclear online presence that doesn't explain what they offer or how to get in touch.",
     solution:
-      "A tool that generates chart summaries, stores signals, tracks watchlists, and reviews outcomes.",
-    impact:
-      "Faster market review and better structure for improving signal logic over time.",
+      "A focused single-page layout that leads visitors from the offer to a clear call to action.",
+    impact: "A more professional first impression and an easier path to enquiries.",
     coverImage: "",
     galleryImages: [],
     githubUrl: "",
@@ -48,20 +57,26 @@ const projects = [
     sortOrder: 1,
   },
   {
-    title: "Warehouse Pallet Tracker",
-    slug: "warehouse-pallet-tracker",
-    shortDescription: "Track. Move. Organize.",
+    title: "Restaurant / Café Website Concept",
+    slug: "restaurant-cafe-website",
+    shortDescription:
+      "A visual website concept focused on menu, atmosphere, booking, and mobile-first browsing.",
     fullDescription:
-      "A workflow tool for tracking pallets across zones and locations, recording every movement, and keeping warehouse stock operations clear.",
-    category: "Internal Tools",
-    tags: ["FastAPI", "SQL", "Workflow"],
-    techStack: ["FastAPI", "SQLAlchemy", "SQLite", "PostgreSQL", "Jinja2"],
-    features: ["Pallet tracking", "Location management", "Move history", "Stock operations"],
+      "A website concept for a café or restaurant that puts atmosphere, the menu, and booking front and centre, designed mobile-first for how people actually browse.",
+    category: "Website",
+    tags: ["Website", "Hospitality", "Mobile-first"],
+    techStack: ["Next.js", "Tailwind CSS", "Image optimization"],
+    features: [
+      "Atmosphere-led hero",
+      "Readable menu layout",
+      "Booking / contact prompts",
+      "Fast mobile experience",
+    ],
     problem:
-      "Warehouse stock movement can become messy when locations and updates are tracked manually.",
+      "Hospitality sites are often cluttered and hard to use on a phone, where most customers look.",
     solution:
-      "A workflow tool for tracking pallets, zones, locations, and movement history.",
-    impact: "Less searching, fewer errors, and clearer warehouse operations.",
+      "A calm, image-led layout that highlights the menu and makes booking or contact obvious.",
+    impact: "A more inviting online presence that reflects the real experience.",
     coverImage: "",
     galleryImages: [],
     githubUrl: "",
@@ -71,20 +86,26 @@ const projects = [
     sortOrder: 2,
   },
   {
-    title: "AI Office Bot",
-    slug: "ai-office-bot",
-    shortDescription: "Capture ideas. Automate tasks.",
+    title: "Valentyn.dev Portfolio CMS",
+    slug: "valentyn-portfolio-cms",
+    shortDescription:
+      "A live, editable portfolio with an admin panel, image uploads, project pages, and contact messages.",
     fullDescription:
-      "A Telegram assistant that saves notes, ideas, tasks, and research requests into a structured markdown workspace so nothing gets lost.",
-    category: "AI Tools",
-    tags: ["Telegram", "AI", "Automation"],
-    techStack: ["Python", "Telegram Bot API", "Markdown", "AI API Integration"],
-    features: ["Notes capture", "Task capture", "Research requests", "Markdown workspace"],
+      "This very site — a premium portfolio with a lightweight CMS so every project, page, and contact message can be managed without touching code.",
+    category: "Website",
+    tags: ["Website", "CMS", "Admin"],
+    techStack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudinary", "Vercel"],
+    features: [
+      "Editable site content",
+      "Project CRUD with images",
+      "Secure admin panel",
+      "Contact message inbox",
+    ],
     problem:
-      "Ideas, tasks, and research notes get lost when they are not captured quickly.",
+      "A portfolio needs to stay current, but editing code for every change is slow and risky.",
     solution:
-      "A Telegram assistant that saves notes, ideas, tasks, and research into a structured workspace.",
-    impact: "Faster capture and better personal workflow organization.",
+      "A protected admin panel that manages projects, content, images, and messages from the browser.",
+    impact: "Content can be updated anytime without a developer or a redeploy.",
     coverImage: "",
     galleryImages: [],
     githubUrl: "",
@@ -94,20 +115,26 @@ const projects = [
     sortOrder: 3,
   },
   {
-    title: "Job Sheets Automation",
-    slug: "job-sheets-automation",
-    shortDescription: "From job to done. Faster.",
+    title: "FlowStock Workflow Prototype",
+    slug: "flowstock-workflow-prototype",
+    shortDescription:
+      "A simple workflow prototype for daily material operations, confirmations, issues, and returns.",
     fullDescription:
-      "Automation scripts that generate structured job sheets from templates while handling business rules and edge cases, backed by regression tests.",
-    category: "Automation",
-    tags: ["Python", "Excel", "Templates"],
-    techStack: ["Python", "OpenPyXL", "Templates", "Testing"],
-    features: ["Template processing", "Job sheet generation", "Business rules", "Regression tests"],
+      "An internal-tool prototype that turns a messy manual material process into a clear daily workflow with confirmations, issue tracking, and returns.",
+    category: "Internal Tool",
+    tags: ["Internal Tool", "Workflow", "Operations"],
+    techStack: ["FastAPI", "SQLAlchemy", "PostgreSQL"],
+    features: [
+      "Daily operations view",
+      "Confirmations & issues",
+      "Returns handling",
+      "Clear movement history",
+    ],
     problem:
-      "Creating job sheets manually is repetitive and prone to formatting issues.",
+      "Daily material operations were tracked manually, making confirmations and returns easy to lose.",
     solution:
-      "Automation scripts generate structured job sheets from templates while handling business rules and edge cases.",
-    impact: "Faster document creation and fewer manual mistakes.",
+      "A lightweight workflow tool that records each step clearly and keeps a simple history.",
+    impact: "Less searching, fewer mistakes, and clearer day-to-day operations.",
     coverImage: "",
     galleryImages: [],
     githubUrl: "",
@@ -117,19 +144,25 @@ const projects = [
     sortOrder: 4,
   },
   {
-    title: "Signal Chart Generator",
-    slug: "signal-chart-generator",
-    shortDescription: "Charts for cleaner market signals.",
+    title: "AI Office Bot",
+    slug: "ai-office-bot",
+    shortDescription:
+      "A Telegram assistant for capturing notes, tasks, ideas, and research into a structured workspace.",
     fullDescription:
-      "A chart module that turns raw market data into compact visual summaries for signals and indicators, making market conditions easier to read.",
-    category: "Data Visualization",
-    tags: ["Python", "Data Viz", "Charts"],
-    techStack: ["Python", "Pandas", "Matplotlib", "Technical Analysis"],
-    features: ["Chart generation", "Indicator labels", "Risk score visuals", "Compact signal cards"],
-    problem: "Market data is harder to understand when it is only shown as raw numbers.",
+      "A simple automation that captures notes, tasks, ideas, and research requests from Telegram into a structured markdown workspace so nothing gets lost.",
+    category: "Automation",
+    tags: ["Automation", "Telegram", "Productivity"],
+    techStack: ["Python", "Telegram Bot API", "Markdown"],
+    features: [
+      "Quick note capture",
+      "Task capture",
+      "Research requests",
+      "Structured workspace",
+    ],
+    problem: "Ideas, tasks, and notes get lost when they aren't captured quickly.",
     solution:
-      "A chart module creates compact visual summaries for signals and indicators.",
-    impact: "Faster visual review and cleaner communication of market conditions.",
+      "A Telegram assistant that saves everything into a structured, searchable workspace.",
+    impact: "Faster capture and better day-to-day organization.",
     coverImage: "",
     galleryImages: [],
     githubUrl: "",
@@ -137,6 +170,28 @@ const projects = [
     featured: true,
     published: true,
     sortOrder: 5,
+  },
+  {
+    title: "Market Risk Oracle",
+    slug: "market-risk-oracle",
+    shortDescription:
+      "A personal analytics experiment for chart-based crypto signal tracking and outcome review.",
+    fullDescription:
+      "A personal experiment that collects chart-based signals, tracks a watchlist, and reviews how signals performed over time.",
+    category: "Experiment",
+    tags: ["Experiment", "Analytics", "Charts"],
+    techStack: ["Python", "SQLite", "Charts"],
+    features: ["Signal tracking", "Watchlist", "Chart summaries", "Outcome review"],
+    problem: "Manual market analysis is repetitive and hard to review later.",
+    solution: "A small tool that stores signals and reviews their outcomes over time.",
+    impact: "Faster review and a clearer way to improve the logic.",
+    coverImage: "",
+    galleryImages: [],
+    githubUrl: "",
+    liveDemoUrl: "",
+    featured: false,
+    published: true,
+    sortOrder: 6,
   },
 ];
 

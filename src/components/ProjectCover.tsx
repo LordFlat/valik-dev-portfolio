@@ -1,29 +1,33 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Renders a project cover image, or a generated cyberpunk placeholder
- * showing the project title when no image is set.
+ * Renders a project cover image, or a warm editorial placeholder showing the
+ * project initials and title when no image is set.
  */
 export function ProjectCover({
   src,
   title,
+  alt,
   className,
   imgClassName,
+  eager,
 }: {
   src?: string | null;
   title: string;
+  alt?: string;
   className?: string;
   imgClassName?: string;
+  eager?: boolean;
 }) {
   if (src) {
     return (
-      <div className={cn("relative overflow-hidden", className)}>
+      <div className={cn("relative overflow-hidden bg-paper-deep", className)}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
-          alt={title}
+          alt={alt || `${title} — project cover`}
           className={cn("h-full w-full object-cover", imgClassName)}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
         />
       </div>
     );
@@ -39,20 +43,19 @@ export function ProjectCover({
   return (
     <div
       className={cn(
-        "relative flex items-center justify-center overflow-hidden bg-bg-navy",
+        "relative flex items-center justify-center overflow-hidden bg-paper-deep",
         className,
       )}
+      role="img"
+      aria-label={alt || `${title} — project cover`}
     >
-      <div className="absolute inset-0 cyber-grid opacity-70" />
-      <div className="absolute -left-10 top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-neon-violet/30 blur-3xl" />
-      <div className="absolute -right-6 bottom-0 h-32 w-32 rounded-full bg-neon-purple/20 blur-3xl" />
+      <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-accent/10 blur-2xl" aria-hidden />
+      <div className="absolute -bottom-12 -left-8 h-44 w-44 rounded-full bg-charcoal/[0.04] blur-2xl" aria-hidden />
       <div className="relative z-10 flex flex-col items-center gap-3 px-6 text-center">
-        <span className="grid h-16 w-16 place-items-center rounded-2xl border border-neon-purple/40 bg-black/40 font-mono text-2xl font-bold text-neon-soft shadow-glow-sm">
+        <span className="grid h-16 w-16 place-items-center rounded-2xl border border-charcoal/15 bg-paper-soft font-display text-2xl font-semibold text-charcoal">
           {initials}
         </span>
-        <span className="font-mono text-sm uppercase tracking-[0.25em] text-ink-muted">
-          {title}
-        </span>
+        <span className="max-w-[16rem] font-display text-base text-charcoal/70">{title}</span>
       </div>
     </div>
   );

@@ -1,47 +1,54 @@
 import Link from "next/link";
 import type { SiteContentData } from "@/lib/queries";
+import { buildSocialLinks } from "@/lib/social";
+import { SocialLinks } from "@/components/site/SocialLinks";
+
+const nav = [
+  { href: "/projects", label: "Work" },
+  { href: "/#services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
 
 export function Footer({ site }: { site: SiteContentData }) {
-  const year = 2026;
-  const socials = [
-    { label: "GitHub", href: site.githubUrl },
-    { label: "LinkedIn", href: site.linkedinUrl },
-    { label: "Telegram", href: site.telegramUrl },
-    { label: "Email", href: site.contactEmail ? `mailto:${site.contactEmail}` : "" },
-  ].filter((s) => s.href);
+  const socials = buildSocialLinks(site);
 
   return (
-    <footer className="mt-24 border-t border-neon-purple/15 bg-bg-secondary/40">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <div className="flex items-center gap-2 font-mono text-base font-bold">
-            <span className="h-2 w-2 rounded-full bg-neon-purple" />
-            {site.logoText}
+    <footer className="mt-28 border-t border-line bg-paper-deep">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6">
+        <div className="grid gap-10 sm:grid-cols-2">
+          <div className="max-w-sm">
+            <Link href="/" className="text-xl font-semibold tracking-tight text-charcoal">
+              {site.logoText}
+              <span className="text-accent">.</span>
+            </Link>
+            <p className="mt-3 text-sm leading-relaxed text-stone">
+              Clean websites, landing pages, and simple digital tools that help small
+              businesses look more professional and bring more enquiries.
+            </p>
+            {socials.length > 0 && <SocialLinks links={socials} className="mt-5" size="sm" />}
           </div>
-          <p className="mt-2 max-w-xs text-sm text-ink-muted">
-            Practical automation, analytics, and AI tools for real workflows.
-          </p>
+
+          <div className="sm:justify-self-end">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-stone">
+              Explore
+            </h2>
+            <ul className="mt-4 flex flex-col gap-2.5">
+              {nav.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm text-stone transition-colors hover:text-charcoal">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 text-sm">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href!}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink-muted transition-colors hover:text-neon-soft"
-            >
-              {s.label}
-            </a>
-          ))}
-          <Link href="/contact" className="text-ink-muted transition-colors hover:text-neon-soft">
-            Contact
-          </Link>
+        <div className="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-xs text-stone sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 Valentyn Varych</span>
+          <span>Websites · Landing Pages · Simple Tools</span>
         </div>
-      </div>
-      <div className="border-t border-neon-purple/10 py-4 text-center text-xs text-ink-muted/70">
-        © {year} {site.siteName}. Built with Next.js.
       </div>
     </footer>
   );

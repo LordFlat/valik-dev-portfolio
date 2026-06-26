@@ -4,8 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Key-screens gallery: a large preview with thumbnail strip below.
- * Captions are derived from the index when none are provided.
+ * Key-screens gallery: a large preview with a thumbnail strip below.
  */
 export function ProjectGallery({
   images,
@@ -20,14 +19,15 @@ export function ProjectGallery({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative overflow-hidden rounded-2xl border border-neon-purple/20 bg-bg-navy">
+      <div className="relative overflow-hidden rounded-3xl border border-line bg-paper-deep">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={images[active]}
-          alt={`${title} screen ${active + 1}`}
-          className="max-h-[520px] w-full object-contain"
+          alt={`${title} — screen ${active + 1}`}
+          className="max-h-[560px] w-full object-contain"
+          loading="lazy"
         />
-        <div className="absolute bottom-3 left-3 rounded-md bg-black/70 px-2.5 py-1 text-xs text-ink-muted backdrop-blur">
+        <div className="absolute bottom-3 left-3 rounded-full bg-charcoal/80 px-2.5 py-1 text-xs text-paper-soft">
           {active + 1} / {images.length}
         </div>
       </div>
@@ -40,14 +40,14 @@ export function ProjectGallery({
               onClick={() => setActive(i)}
               aria-label={`View screen ${i + 1}`}
               className={cn(
-                "relative h-16 w-24 flex-shrink-0 overflow-hidden rounded-lg border transition-all",
+                "relative h-16 w-24 flex-shrink-0 overflow-hidden rounded-xl border transition-all",
                 i === active
-                  ? "border-neon-purple/70 shadow-glow-sm"
-                  : "border-white/10 opacity-60 hover:opacity-100",
+                  ? "border-charcoal"
+                  : "border-line opacity-60 hover:opacity-100",
               )}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt="" className="h-full w-full object-cover" />
+              <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
             </button>
           ))}
         </div>

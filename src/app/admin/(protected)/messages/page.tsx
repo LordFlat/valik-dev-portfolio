@@ -22,6 +22,7 @@ export default async function MessagesPage() {
             id: m.id,
             name: m.name,
             email: m.email,
+            projectType: m.projectType,
             message: m.message,
             read: m.read,
             createdAt: m.createdAt.toISOString(),

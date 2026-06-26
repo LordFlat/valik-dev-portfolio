@@ -40,7 +40,17 @@ export const siteContentSchema = z.object({
   contactEmail: z.string().email("Invalid email").or(z.literal("")).optional().nullable(),
   githubUrl: z.string().url().or(z.literal("")).optional().nullable(),
   linkedinUrl: z.string().url().or(z.literal("")).optional().nullable(),
-  telegramUrl: z.string().url().or(z.literal("")).optional().nullable(),
+  // Telegram accepts a full URL or a @username / username.
+  telegramUrl: z.string().max(120).or(z.literal("")).optional().nullable(),
+  instagramUrl: z.string().url().or(z.literal("")).optional().nullable(),
+  facebookUrl: z.string().url().or(z.literal("")).optional().nullable(),
+  // WhatsApp accepts a full URL or a phone number (digits, spaces, +, -, ()).
+  whatsappUrl: z
+    .string()
+    .max(120)
+    .or(z.literal(""))
+    .optional()
+    .nullable(),
   seoTitle: z.string().max(160).optional().nullable(),
   seoDescription: z.string().max(320).optional().nullable(),
 });
@@ -48,6 +58,7 @@ export const siteContentSchema = z.object({
 export const contactSchema = z.object({
   name: z.string().min(1, "Name is required").max(120),
   email: z.string().email("Please enter a valid email"),
+  projectType: z.string().max(80).optional().nullable(),
   message: z.string().min(5, "Message is too short").max(4000),
   // Honeypot — must stay empty. Bots tend to fill every field.
   website: z.string().max(0).optional().default(""),

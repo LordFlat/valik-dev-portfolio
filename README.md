@@ -1,8 +1,8 @@
-# WorkFlow.dev
+# Valentyn.dev
 
-A minimal **cyberpunk-style portfolio + lightweight CMS** for a junior Python / Automation / AI tools developer (Valentyn Varych).
+A **light, premium web-studio portfolio + lightweight CMS** for a UK-based web designer & automation developer (Valentyn Varych).
 
-The public site shows a clean hero, a featured-work carousel, project case-study pages, an About page and a Contact form. A protected `/admin` panel lets you manage everything — projects, site content and contact messages — **without touching code**.
+The public site positions the brand around helping small businesses look better online — clean websites, landing pages, and simple digital tools. It has an editorial hero, selected-work case studies, services, a simple process, an About page and a conversion-focused Contact page. A protected `/admin` panel lets you manage everything — projects, site content, social links and contact messages — **without touching code**.
 
 Built with **Next.js (App Router) · TypeScript · Tailwind CSS · Prisma · PostgreSQL**.
 
@@ -10,15 +10,18 @@ Built with **Next.js (App Router) · TypeScript · Tailwind CSS · Prisma · Pos
 
 ## ✨ Features
 
-- Dark cyberpunk UI — black / deep-navy + neon purple, glow effects, fully responsive.
-- Homepage **project carousel** (center card large, side cards peeking, arrows, dots, swipe, keyboard).
-- `/projects` grid with optional category filters.
-- `/projects/[slug]` case-study pages: What it does · Key screens gallery · Problem / Solution / Impact.
-- `/about` and `/contact` (form saved to DB, with validation + honeypot anti-spam).
-- **Admin CMS** (`/admin`): dashboard stats, project CRUD, publish/feature toggles, sort order, site-content editor, contact messages.
-- Cookie-based admin auth (bcrypt password hash + signed JWT), middleware-protected routes.
-- SEO: dynamic metadata, OpenGraph, sitemap, robots, favicon.
+- **Light, editorial studio design** — warm ivory background, charcoal type, Fraunces display headings, large whitespace, smooth hover/motion. Mobile-first.
+- Homepage: editorial hero, **Selected work** case-study cards, **Services**, **Simple process**, and a contact CTA.
+- `/projects` premium case-study index (large alternating cards) with optional category filters.
+- `/projects/[slug]` case studies: Overview · The challenge · The approach · What changed · Key screens · What was built · Built with.
+- `/about` (positioning + values) and `/contact` (conversion-focused form with a **Project type** field, saved to DB, validation + honeypot anti-spam, quick-message social links).
+- **Social/contact links** — Instagram, Facebook, WhatsApp, Telegram, GitHub, LinkedIn, Email — editable in admin and shown in the footer & contact page (empty links are hidden; WhatsApp/Telegram are normalized to `wa.me` / `t.me`).
+- **Admin CMS** (`/admin`): dashboard stats, project CRUD, publish/feature toggles, sort order, site-content editor (incl. socials), contact messages (with project type).
+- Cookie-based admin auth (bcrypt password hash + signed JWT), middleware-protected routes (admin is `noindex`).
+- **SEO**: per-page metadata + title template, canonical URLs, OpenGraph & Twitter cards, dynamic `/opengraph-image`, sitemap, robots, and JSON-LD (Person/WebSite/CreativeWork/ContactPage).
 - Cover-image placeholder generator (no image needed to look good).
+
+> The admin panel keeps its original dark UI; the redesign is scoped to the public-facing site.
 
 ---
 
@@ -61,7 +64,8 @@ Then fill in `.env`:
   ```bash
   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
   ```
-- **`NEXTAUTH_URL`** — `http://localhost:3000` locally; your Vercel URL in production.
+- **`NEXTAUTH_URL`** — legacy URL kept for backwards compatibility (`http://localhost:3000` locally).
+- **`NEXT_PUBLIC_SITE_URL`** — the public site URL used for canonical links, sitemap, robots, OpenGraph and JSON-LD. `http://localhost:3000` locally; `https://work-flow-dev.vercel.app` (or your custom domain) in production.
 - **`ADMIN_EMAIL`** — the email you'll log in with.
 - **`ADMIN_PASSWORD_HASH`** — a bcrypt hash of your admin password (see next step).
 
@@ -80,8 +84,9 @@ npx prisma migrate dev --name init   # create tables
 npm run db:seed                       # load site content + 5 sample projects
 ```
 
-> No `migrations/` folder is committed — the first `migrate dev` creates it from `schema.prisma`.
-> Prefer not to use migrations? Run `npm run db:push` instead, then `npm run db:seed`.
+> Migrations are committed under `prisma/migrations/`. On an existing database run
+> `npx prisma migrate deploy` to apply them. Prefer not to use migrations? Run
+> `npm run db:push` instead (it safely adds the new nullable columns), then `npm run db:seed`.
 
 ### 5. Run the dev server
 
@@ -148,7 +153,7 @@ Featured **and** published projects appear in the homepage carousel, ordered by 
 1. Push this folder to a GitHub repo.
 2. On <https://vercel.com> → **New Project** → import the repo.
 3. Add **Environment Variables** (same as `.env`):
-   - `DATABASE_URL`, `AUTH_SECRET`, `NEXTAUTH_URL` (your `https://your-app.vercel.app`),
+   - `DATABASE_URL`, `AUTH_SECRET`, `NEXTAUTH_URL`, **`NEXT_PUBLIC_SITE_URL`** (your `https://your-app.vercel.app`),
      `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH` (and Cloudinary vars if used).
 4. The build runs `prisma generate && next build` automatically.
 5. **Run migrations against your production DB** once. Either:

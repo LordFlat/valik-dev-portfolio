@@ -58,6 +58,9 @@ model SiteContent {
   githubUrl           String?
   linkedinUrl         String?
   telegramUrl         String?
+  instagramUrl        String?
+  facebookUrl         String?
+  whatsappUrl         String?
 
   seoTitle            String?
   seoDescription      String?
@@ -66,12 +69,13 @@ model SiteContent {
 }
 
 model ContactMessage {
-  id        String   @id @default(cuid())
-  name      String
-  email     String
-  message   String
-  read      Boolean  @default(false)
-  createdAt DateTime @default(now())
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  projectType String?
+  message     String
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
 
   @@index([read, createdAt])
 }

@@ -67,18 +67,31 @@ export function SiteContentForm({ content }: { content: SiteContentData }) {
       </Section>
 
       <Section title="Contact & socials">
+        <p className="text-xs text-ink-muted">
+          Empty links are hidden on the public site. WhatsApp accepts a full link or a phone
+          number; Telegram accepts a full link or a @username.
+        </p>
         <Field label="Contact email" htmlFor="contactEmail" error={err("contactEmail")}>
           <Input id="contactEmail" name="contactEmail" type="email" defaultValue={content.contactEmail ?? ""} error={err("contactEmail")} />
         </Field>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field label="Instagram URL" htmlFor="instagramUrl" error={err("instagramUrl")}>
+            <Input id="instagramUrl" name="instagramUrl" placeholder="https://instagram.com/…" defaultValue={content.instagramUrl ?? ""} error={err("instagramUrl")} />
+          </Field>
+          <Field label="Facebook URL" htmlFor="facebookUrl" error={err("facebookUrl")}>
+            <Input id="facebookUrl" name="facebookUrl" placeholder="https://facebook.com/…" defaultValue={content.facebookUrl ?? ""} error={err("facebookUrl")} />
+          </Field>
+          <Field label="WhatsApp (link or phone)" htmlFor="whatsappUrl" error={err("whatsappUrl")}>
+            <Input id="whatsappUrl" name="whatsappUrl" placeholder="+44 7… or https://wa.me/…" defaultValue={content.whatsappUrl ?? ""} error={err("whatsappUrl")} />
+          </Field>
+          <Field label="Telegram (link or @username)" htmlFor="telegramUrl" error={err("telegramUrl")}>
+            <Input id="telegramUrl" name="telegramUrl" placeholder="@username or https://t.me/…" defaultValue={content.telegramUrl ?? ""} error={err("telegramUrl")} />
+          </Field>
           <Field label="GitHub URL" htmlFor="githubUrl" error={err("githubUrl")}>
             <Input id="githubUrl" name="githubUrl" defaultValue={content.githubUrl ?? ""} error={err("githubUrl")} />
           </Field>
           <Field label="LinkedIn URL" htmlFor="linkedinUrl" error={err("linkedinUrl")}>
             <Input id="linkedinUrl" name="linkedinUrl" defaultValue={content.linkedinUrl ?? ""} error={err("linkedinUrl")} />
-          </Field>
-          <Field label="Telegram URL" htmlFor="telegramUrl" error={err("telegramUrl")}>
-            <Input id="telegramUrl" name="telegramUrl" defaultValue={content.telegramUrl ?? ""} error={err("telegramUrl")} />
           </Field>
         </div>
       </Section>

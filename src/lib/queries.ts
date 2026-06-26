@@ -4,24 +4,27 @@ import { prisma } from "./prisma";
 /** Default site content used when the DB has no row yet (keeps pages rendering). */
 export const DEFAULT_SITE_CONTENT = {
   id: "default",
-  siteName: "WorkFlow.dev",
-  logoText: "WorkFlow.dev",
-  heroBadge: "BUILD • AUTOMATE • SCALE",
-  heroTitle: "Automation that makes work easier",
+  siteName: "Valentyn.dev",
+  logoText: "Valentyn.dev",
+  heroBadge: "Websites · Landing Pages · Simple Tools",
+  heroTitle: "Beautiful websites for businesses that want to be chosen.",
   heroSubtitle:
-    "I build Python automation, analytics, and AI-powered tools that solve real workflow problems.",
+    "I help local businesses, creators, and small teams turn a basic online presence into a clean, premium website that builds trust and brings more enquiries.",
   primaryButtonText: "View Work",
-  secondaryButtonText: "Contact Me",
-  aboutTitle: "Practical tools for real workflows.",
+  secondaryButtonText: "Start a Project",
+  aboutTitle: "Clear websites and simple tools for real business problems.",
   aboutText:
-    "I'm Valentyn Varych, a beginner developer focused on Python, automation, analytics, and AI-powered tools. My background in real operational work helps me notice messy processes and turn them into simple digital systems.",
+    "I'm Valentyn, based in the UK. I build clean landing pages, websites, and practical digital tools for small businesses and real workflows. My background in operations helps me understand messy processes and turn them into clearer digital experiences.",
   contactEmail: "",
   githubUrl: "",
   linkedinUrl: "",
   telegramUrl: "",
-  seoTitle: "WorkFlow.dev — Python Automation Portfolio",
+  instagramUrl: "",
+  facebookUrl: "",
+  whatsappUrl: "",
+  seoTitle: "Valentyn.dev — Websites, Landing Pages and Digital Tools",
   seoDescription:
-    "Portfolio of Python automation, analytics, and AI workflow projects by Valentyn Varych.",
+    "Premium websites, landing pages, and simple automation tools for small businesses, creators, and practical workflows.",
   updatedAt: new Date(),
 };
 

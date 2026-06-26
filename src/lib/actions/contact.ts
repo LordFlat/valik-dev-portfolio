@@ -16,6 +16,7 @@ export async function submitContactAction(
   const parsed = contactSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
+    projectType: formData.get("projectType"),
     message: formData.get("message"),
     website: formData.get("website"), // honeypot
   });
@@ -36,6 +37,7 @@ export async function submitContactAction(
       data: {
         name: parsed.data.name,
         email: parsed.data.email,
+        projectType: parsed.data.projectType || null,
         message: parsed.data.message,
       },
     });

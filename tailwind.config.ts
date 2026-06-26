@@ -14,11 +14,13 @@ const config: Config = {
           secondary: "#070A14",
           navy: "#0B1020",
         },
-        card: "rgba(10, 12, 24, 0.75)",
+        card: "rgba(20, 19, 17, 0.72)",
+        // Admin accent (was neon purple) — repointed to the warm brand accent
+        // for a clean, professional, non-cyberpunk CMS look.
         neon: {
-          purple: "#A855F7",
-          violet: "#7C3AED",
-          soft: "#C084FC",
+          purple: "#C2502E",
+          violet: "#B8492A",
+          soft: "#D9663F",
         },
         ink: {
           white: "#F8FAFC",
@@ -48,13 +50,13 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       boxShadow: {
-        glow: "0 0 40px -8px rgba(168, 85, 247, 0.45)",
-        "glow-sm": "0 0 20px -6px rgba(168, 85, 247, 0.4)",
-        "glow-lg": "0 0 80px -12px rgba(124, 58, 237, 0.5)",
+        glow: "0 18px 50px -14px rgba(0, 0, 0, 0.55)",
+        "glow-sm": "0 8px 24px -10px rgba(0, 0, 0, 0.5)",
+        "glow-lg": "0 30px 80px -16px rgba(0, 0, 0, 0.6)",
       },
       backgroundImage: {
         "grid-faint":
-          "linear-gradient(rgba(168,85,247,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.06) 1px, transparent 1px)",
+          "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
       },
       keyframes: {
         "fade-up": {

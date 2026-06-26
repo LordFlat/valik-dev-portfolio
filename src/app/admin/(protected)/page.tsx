@@ -50,9 +50,7 @@ export default async function AdminDashboard() {
         ))}
       </div>
 
-      <h2 className="mt-10 text-sm font-medium uppercase tracking-[0.2em] text-neon-soft/70">
-        Quick actions
-      </h2>
+      <h2 className="mt-10 text-sm font-semibold text-ink-white">Quick actions</h2>
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {actions.map((a) => (
           <Link

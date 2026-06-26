@@ -20,9 +20,9 @@ export function AdminSidebar({ email }: { email: string }) {
   return (
     <aside className="flex flex-col gap-6 border-b border-neon-purple/15 bg-bg-secondary/60 p-4 backdrop-blur-md md:h-screen md:w-60 md:flex-shrink-0 md:border-b-0 md:border-r">
       <div>
-        <Link href="/admin" className="flex items-center gap-2 font-mono text-base font-bold">
-          <span className="h-2 w-2 rounded-full bg-neon-purple shadow-glow-sm" />
-          WorkFlow.dev
+        <Link href="/admin" className="flex items-center gap-2 text-base font-semibold tracking-tight">
+          <span className="h-2 w-2 rounded-full bg-neon-soft" />
+          Valentyn <span className="text-neon-soft">Studio</span>
         </Link>
         <p className="mt-1 hidden text-xs text-ink-muted md:block">Admin panel</p>
       </div>

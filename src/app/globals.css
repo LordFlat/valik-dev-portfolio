@@ -24,15 +24,15 @@
 }
 
 @layer components {
-  /* Dark admin helpers (unchanged) */
+  /* Dark admin helpers — neutralized (no purple neon) */
   .glass {
-    @apply border border-neon-purple/20 bg-card backdrop-blur-md;
+    @apply border border-white/10 bg-card backdrop-blur-md;
   }
   .glow-text {
-    text-shadow: 0 0 24px rgba(168, 85, 247, 0.55);
+    text-shadow: none;
   }
   .neon-border {
-    @apply border border-neon-purple/25;
+    @apply border border-white/15;
   }
   /* Hide scrollbars on horizontal gallery / carousel rails */
   .no-scrollbar::-webkit-scrollbar {

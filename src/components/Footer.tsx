@@ -26,6 +26,11 @@ export function Footer({ site }: { site: SiteContentData }) {
               Clean websites, landing pages, and simple digital tools that help small
               businesses look more professional and bring more enquiries.
             </p>
+            <address className="mt-4 text-sm not-italic leading-relaxed text-stone">
+              Based in <span className="font-medium text-charcoal">Evesham, Worcestershire</span>
+              <br />
+              Serving Worcestershire, the West Midlands &amp; the Cotswolds
+            </address>
             {socials.length > 0 && <SocialLinks links={socials} className="mt-5" size="sm" />}
           </div>
 

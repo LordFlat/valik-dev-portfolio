@@ -14,7 +14,7 @@ export const DEFAULT_SITE_CONTENT = {
   secondaryButtonText: "Start a Project",
   aboutTitle: "Clear websites and simple tools for real business problems.",
   aboutText:
-    "I'm Valentyn, based in the UK. I build clean landing pages, websites, and practical digital tools for small businesses and real workflows. My background in operations helps me understand messy processes and turn them into clearer digital experiences.",
+    "I'm Valentyn, a web designer based in Evesham, Worcestershire. I build clean landing pages, websites, and practical digital tools for small businesses across Worcestershire, the Cotswolds and the West Midlands — and remotely with clients across the UK. My background in operations helps me turn messy processes into clearer, more useful digital experiences.",
   contactEmail: "",
   githubUrl: "",
   linkedinUrl: "",
@@ -22,9 +22,9 @@ export const DEFAULT_SITE_CONTENT = {
   instagramUrl: "",
   facebookUrl: "",
   whatsappUrl: "",
-  seoTitle: "Valentyn Studio — Websites, Landing Pages and Digital Tools",
+  seoTitle: "Valentyn Studio — Web Design in Evesham, Worcestershire",
   seoDescription:
-    "Premium websites, landing pages, and simple automation tools for small businesses, creators, and practical workflows.",
+    "Freelance web designer in Evesham, Worcestershire. Premium websites, landing pages and simple digital tools for small businesses across Worcestershire, the Cotswolds and the West Midlands.",
   updatedAt: new Date(),
 };
 

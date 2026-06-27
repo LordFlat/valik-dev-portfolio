@@ -1,6 +1,28 @@
 /** Canonical production domain for the public brand. */
 export const PRODUCTION_SITE_URL = "https://valentyn.studio";
 
+/** Business identity & location — used for local SEO (JSON-LD, NAP, copy). */
+export const business = {
+  name: "Valentyn Studio",
+  founder: "Valentyn Varych",
+  jobTitle: "Web Designer & Automation Developer",
+  locality: "Evesham",
+  region: "Worcestershire",
+  country: "GB",
+  // Approximate coordinates for Evesham, Worcestershire.
+  geo: { lat: 52.0917, lng: -1.9476 },
+  areasServed: [
+    "Evesham",
+    "Worcester",
+    "Worcestershire",
+    "Pershore",
+    "Cheltenham",
+    "Stratford-upon-Avon",
+    "The Cotswolds",
+    "West Midlands",
+  ],
+} as const;
+
 /**
  * Resolve the public site URL used for canonical links, sitemap, robots,
  * OpenGraph and JSON-LD. Always returned without a trailing slash.

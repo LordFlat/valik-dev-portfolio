@@ -3,15 +3,24 @@ import { SiteLink } from "@/components/site/SiteLink";
 import { ProjectCard } from "@/components/ProjectCard";
 import { JsonLd } from "@/components/site/JsonLd";
 import { getFeaturedProjects, getPublishedProjects, getSiteContent } from "@/lib/queries";
-import { siteUrl } from "@/lib/site";
+import { siteUrl, business } from "@/lib/site";
 import { sameAsLinks } from "@/lib/social";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: { absolute: "Valentyn Studio — Websites that help businesses get chosen" },
+  title: { absolute: "Web Design in Evesham, Worcestershire — Valentyn Studio" },
   description:
-    "I help small businesses, creators, and local teams turn a basic online presence into a clean, premium website that builds trust and brings more enquiries.",
+    "Freelance web designer in Evesham, Worcestershire. Clean, premium websites and landing pages for small businesses across Worcestershire, the Cotswolds and the West Midlands — built to bring more enquiries.",
+  keywords: [
+    "web design Evesham",
+    "web designer Worcestershire",
+    "website design Evesham",
+    "landing pages Worcestershire",
+    "small business websites West Midlands",
+    "freelance web designer Cotswolds",
+    "website redesign Worcestershire",
+  ],
   alternates: { canonical: "/" },
 };
 
@@ -58,10 +67,48 @@ export default async function HomePage() {
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      name: "Valentyn Varych",
+      name: business.founder,
       url: base,
-      jobTitle: "Web Designer and Automation Developer",
+      jobTitle: business.jobTitle,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: business.locality,
+        addressRegion: business.region,
+        addressCountry: business.country,
+      },
       sameAs: sameAsLinks(site),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": `${base}/#studio`,
+      name: site.siteName,
+      url: base,
+      image: `${base}/opengraph-image`,
+      description:
+        "Web design, landing pages, and simple digital tools for small businesses in Evesham, Worcestershire and across the West Midlands and the Cotswolds.",
+      founder: { "@type": "Person", name: business.founder },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: business.locality,
+        addressRegion: business.region,
+        addressCountry: business.country,
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: business.geo.lat,
+        longitude: business.geo.lng,
+      },
+      areaServed: business.areasServed.map((a) => ({ "@type": "Place", name: a })),
+      serviceType: [
+        "Web design",
+        "Landing page design",
+        "Website redesign",
+        "Business automation",
+      ],
+      priceRange: "££",
+      sameAs: sameAsLinks(site),
+      ...(site.contactEmail ? { email: site.contactEmail } : {}),
     },
   ];
 
@@ -90,6 +137,11 @@ export default async function HomePage() {
             {site.secondaryButtonText || "Start a Project"}
           </SiteLink>
         </div>
+        <p className="mt-7 animate-rise text-sm text-stone">
+          Web design for small businesses in{" "}
+          <span className="font-medium text-charcoal">Evesham, Worcestershire</span> — and across
+          the West Midlands &amp; the Cotswolds.
+        </p>
       </section>
 
       {/* Selected work */}

@@ -44,6 +44,12 @@ export default async function AboutPage() {
         <div className="mt-8 max-w-2xl space-y-5 text-lg leading-relaxed text-stone">
           <p>{site.aboutText}</p>
           <p>
+            I work with small businesses across <strong className="font-semibold text-charcoal">Worcestershire</strong>,
+            the <strong className="font-semibold text-charcoal">West Midlands</strong> and the
+            <strong className="font-semibold text-charcoal"> Cotswolds</strong> — and remotely with
+            clients across the UK.
+          </p>
+          <p>
             My background in real operations helps me understand messy processes, unclear
             communication, and manual work. I use that experience to create websites and tools
             that feel clear, useful, and easy to manage.

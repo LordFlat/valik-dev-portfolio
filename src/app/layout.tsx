@@ -26,6 +26,14 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s — ${site.siteName}`,
     },
     description,
+    keywords: [
+      "web design Evesham",
+      "web designer Worcestershire",
+      "website design Worcestershire",
+      "landing pages Evesham",
+      "small business websites West Midlands",
+      "freelance web designer Cotswolds",
+    ],
     icons: { icon: "/favicon.svg" },
     alternates: { canonical: "/" },
     openGraph: {

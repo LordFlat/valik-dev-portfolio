@@ -41,6 +41,7 @@ export default async function ProjectsPage() {
             category: p.category,
             tags: p.tags,
             coverImage: p.coverImage,
+            liveDemoUrl: p.liveDemoUrl,
           }))}
         />
       </div>

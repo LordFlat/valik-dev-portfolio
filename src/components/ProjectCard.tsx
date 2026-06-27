@@ -9,6 +9,7 @@ export type ProjectCardData = {
   category: string | null;
   tags: string[];
   coverImage: string | null;
+  liveDemoUrl?: string | null;
 };
 
 export function ProjectCard({ project }: { project: ProjectCardData }) {

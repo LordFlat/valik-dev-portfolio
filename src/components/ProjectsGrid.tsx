@@ -49,14 +49,15 @@ export function ProjectsGrid({ projects }: { projects: ProjectCardData[] }) {
 
       <div className="flex flex-col gap-16 sm:gap-20">
         {visible.map((p, i) => (
-          <Link
+          <article
             key={p.slug}
-            href={`/projects/${p.slug}`}
             className="group grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
           >
-            <div
+            <Link
+              href={`/projects/${p.slug}`}
+              aria-label={`View ${p.title} case study`}
               className={cn(
-                "overflow-hidden rounded-3xl border border-line bg-paper-deep",
+                "block overflow-hidden rounded-3xl border border-line bg-paper-deep",
                 i % 2 === 1 && "lg:order-2",
               )}
             >
@@ -67,7 +68,7 @@ export function ProjectsGrid({ projects }: { projects: ProjectCardData[] }) {
                 className="aspect-[16/11] w-full"
                 imgClassName="transition-transform duration-700 group-hover:scale-[1.03]"
               />
-            </div>
+            </Link>
             <div>
               {p.category && (
                 <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
@@ -75,7 +76,9 @@ export function ProjectsGrid({ projects }: { projects: ProjectCardData[] }) {
                 </span>
               )}
               <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-charcoal sm:text-4xl">
-                {p.title}
+                <Link href={`/projects/${p.slug}`} className="transition-colors hover:text-accent">
+                  {p.title}
+                </Link>
               </h2>
               <p className="mt-4 max-w-md text-base leading-relaxed text-stone">
                 {p.shortDescription}
@@ -92,12 +95,27 @@ export function ProjectsGrid({ projects }: { projects: ProjectCardData[] }) {
                   ))}
                 </div>
               )}
-              <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-charcoal">
-                View case study
-                <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </span>
+              <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
+                <Link
+                  href={`/projects/${p.slug}`}
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal"
+                >
+                  View case study
+                  <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </Link>
+                {p.liveDemoUrl && (
+                  <a
+                    href={p.liveDemoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-stone underline-offset-4 transition-colors hover:text-accent hover:underline"
+                  >
+                    Live demo <span aria-hidden>↗</span>
+                  </a>
+                )}
+              </div>
             </div>
-          </Link>
+          </article>
         ))}
       </div>
     </div>

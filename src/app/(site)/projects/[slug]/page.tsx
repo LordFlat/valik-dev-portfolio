@@ -76,6 +76,13 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         <p className="mt-5 max-w-2xl text-xl leading-relaxed text-stone">
           {project.shortDescription}
         </p>
+        {project.liveDemoUrl && (
+          <div className="mt-6">
+            <SiteLink href={project.liveDemoUrl} variant="secondary" external>
+              View live demo ↗
+            </SiteLink>
+          </div>
+        )}
       </header>
 
       <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-line">
@@ -140,16 +147,6 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         <SiteLink href="/projects" variant="secondary">
           Back to work
         </SiteLink>
-        {project.liveDemoUrl && (
-          <SiteLink href={project.liveDemoUrl} variant="ghost" external>
-            Live demo ↗
-          </SiteLink>
-        )}
-        {project.githubUrl && (
-          <SiteLink href={project.githubUrl} variant="ghost" external>
-            View code ↗
-          </SiteLink>
-        )}
       </div>
     </article>
   );

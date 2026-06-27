@@ -53,22 +53,32 @@ export function ProjectsGrid({ projects }: { projects: ProjectCardData[] }) {
             key={p.slug}
             className="group grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
           >
-            <Link
-              href={`/projects/${p.slug}`}
-              aria-label={`View ${p.title} case study`}
+            <div
               className={cn(
-                "block overflow-hidden rounded-3xl border border-line bg-paper-deep",
+                "relative overflow-hidden rounded-3xl border border-line bg-paper-deep",
                 i % 2 === 1 && "lg:order-2",
               )}
             >
-              <ProjectCover
-                src={p.coverImage}
-                title={p.title}
-                alt={`${p.title} — ${p.shortDescription}`}
-                className="aspect-[16/11] w-full"
-                imgClassName="transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-            </Link>
+              <Link href={`/projects/${p.slug}`} aria-label={`View ${p.title} case study`} className="block">
+                <ProjectCover
+                  src={p.coverImage}
+                  title={p.title}
+                  alt={`${p.title} — ${p.shortDescription}`}
+                  className="aspect-[16/11] w-full"
+                  imgClassName="transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </Link>
+              {p.liveDemoUrl && (
+                <a
+                  href={p.liveDemoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute right-3 top-3 z-10 inline-flex min-h-[40px] items-center gap-1 rounded-full border border-line bg-[rgba(255,253,248,0.88)] px-3 py-2 text-[13px] font-medium text-charcoal shadow-[0_6px_18px_-8px_rgba(17,17,17,0.35)] backdrop-blur transition-colors hover:border-charcoal hover:bg-charcoal hover:text-paper-soft"
+                >
+                  Live demo <span aria-hidden>↗</span>
+                </a>
+              )}
+            </div>
             <div>
               {p.category && (
                 <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
@@ -95,25 +105,13 @@ export function ProjectsGrid({ projects }: { projects: ProjectCardData[] }) {
                   ))}
                 </div>
               )}
-              <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
-                <Link
-                  href={`/projects/${p.slug}`}
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal"
-                >
-                  View case study
-                  <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </Link>
-                {p.liveDemoUrl && (
-                  <a
-                    href={p.liveDemoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm text-stone underline-offset-4 transition-colors hover:text-accent hover:underline"
-                  >
-                    Live demo <span aria-hidden>↗</span>
-                  </a>
-                )}
-              </div>
+              <Link
+                href={`/projects/${p.slug}`}
+                className="mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-charcoal"
+              >
+                View case study
+                <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
             </div>
           </article>
         ))}

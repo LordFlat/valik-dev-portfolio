@@ -59,6 +59,14 @@ export function LinkedinIcon({ className }: IconProps) {
   );
 }
 
+export function PhoneIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <path d="M6.5 3h3l1.5 4.5-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z" />
+    </svg>
+  );
+}
+
 export function EmailIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
@@ -83,6 +91,7 @@ const map: Record<SocialKey, (p: IconProps) => JSX.Element> = {
   telegram: TelegramIcon,
   github: GithubIcon,
   linkedin: LinkedinIcon,
+  phone: PhoneIcon,
   email: EmailIcon,
 };
 

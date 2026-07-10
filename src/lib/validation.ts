@@ -38,6 +38,7 @@ export const siteContentSchema = z.object({
   aboutTitle: z.string().max(160).optional().nullable(),
   aboutText: z.string().max(2000).optional().nullable(),
   contactEmail: z.string().email("Invalid email").or(z.literal("")).optional().nullable(),
+  phone: z.string().max(40).or(z.literal("")).optional().nullable(),
   githubUrl: z.string().url().or(z.literal("")).optional().nullable(),
   linkedinUrl: z.string().url().or(z.literal("")).optional().nullable(),
   // Telegram accepts a full URL or a @username / username.

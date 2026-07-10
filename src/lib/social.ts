@@ -7,6 +7,7 @@ export type SocialKey =
   | "telegram"
   | "github"
   | "linkedin"
+  | "phone"
   | "email";
 
 export type SocialLink = {
@@ -35,6 +36,14 @@ function telegramHref(value: string): string {
   return handle ? `https://t.me/${handle}` : "";
 }
 
+/** Normalize a phone value into a tel: href (keeps a leading +, strips spaces/dashes). */
+function telHref(value: string): string {
+  const v = value.trim();
+  if (!v) return "";
+  const cleaned = v.replace(/[^\d+]/g, "");
+  return cleaned ? `tel:${cleaned}` : "";
+}
+
 /**
  * Build the ordered list of public social/contact links from site content.
  * Empty values are omitted so the UI never renders dead links.
@@ -52,6 +61,8 @@ export function buildSocialLinks(site: SiteContentData): SocialLink[] {
   push("telegram", "Telegram", telegramHref(site.telegramUrl ?? ""));
   push("github", "GitHub", site.githubUrl ?? "");
   push("linkedin", "LinkedIn", site.linkedinUrl ?? "");
+  // Phone: the label is the human-readable number so text links show it directly.
+  push("phone", (site.phone ?? "").trim(), telHref(site.phone ?? ""));
   push("email", "Email", site.contactEmail ? `mailto:${site.contactEmail}` : "");
 
   return out;

@@ -55,6 +55,7 @@ export default async function HomePage() {
   const selected = (featured.length ? featured : await getPublishedProjects()).slice(0, 6);
 
   const base = siteUrl();
+  const tel = (site.phone ?? "").replace(/[^\d+]/g, "");
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -70,6 +71,7 @@ export default async function HomePage() {
       name: business.founder,
       url: base,
       jobTitle: business.jobTitle,
+      ...(tel ? { telephone: tel } : {}),
       address: {
         "@type": "PostalAddress",
         addressLocality: business.locality,
@@ -107,6 +109,7 @@ export default async function HomePage() {
         "Business automation",
       ],
       priceRange: "££",
+      ...(tel ? { telephone: tel } : {}),
       sameAs: sameAsLinks(site),
       ...(site.contactEmail ? { email: site.contactEmail } : {}),
     },

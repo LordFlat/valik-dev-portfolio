@@ -74,6 +74,9 @@ export function SiteContentForm({ content }: { content: SiteContentData }) {
         <Field label="Contact email" htmlFor="contactEmail" error={err("contactEmail")}>
           <Input id="contactEmail" name="contactEmail" type="email" defaultValue={content.contactEmail ?? ""} error={err("contactEmail")} />
         </Field>
+        <Field label="Phone" htmlFor="phone" error={err("phone")}>
+          <Input id="phone" name="phone" type="tel" placeholder="+44 7…" defaultValue={content.phone ?? ""} error={err("phone")} />
+        </Field>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Instagram URL" htmlFor="instagramUrl" error={err("instagramUrl")}>
             <Input id="instagramUrl" name="instagramUrl" placeholder="https://instagram.com/…" defaultValue={content.instagramUrl ?? ""} error={err("instagramUrl")} />

@@ -14,7 +14,8 @@ const siteContent = {
   aboutTitle: "Clear websites and simple tools for real business problems.",
   aboutText:
     "I'm Valentyn, a web designer based in Evesham, Worcestershire. I build clean landing pages, websites, and practical digital tools for small businesses across Worcestershire, the Cotswolds and the West Midlands — and remotely with clients across the UK. My background in operations helps me turn messy processes into clearer, more useful digital experiences.",
-  contactEmail: "",
+  contactEmail: "contact@valentyn.studio",
+  phone: "+44 7836 633485",
   githubUrl: "",
   linkedinUrl: "",
   telegramUrl: "",

@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { contactSchema } from "@/lib/validation";
+import { sendContactNotification } from "@/lib/email";
 
 export type ContactState = {
   status: "idle" | "success" | "error";
@@ -43,6 +44,18 @@ export async function submitContactAction(
     });
   } catch {
     return { status: "error", message: "Something went wrong. Please try again later." };
+  }
+
+  // Notify the studio inbox by email — best-effort, never blocks the visitor's success.
+  try {
+    await sendContactNotification({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      projectType: parsed.data.projectType,
+      message: parsed.data.message,
+    });
+  } catch (err) {
+    console.error("Contact email notification failed:", err);
   }
 
   return { status: "success", message: "Thanks! Your message has been sent." };

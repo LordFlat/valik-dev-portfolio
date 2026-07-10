@@ -55,6 +55,7 @@ model SiteContent {
   aboutText           String?
 
   contactEmail        String?
+  phone               String?
   githubUrl           String?
   linkedinUrl         String?
   telegramUrl         String?

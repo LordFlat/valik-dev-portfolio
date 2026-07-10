@@ -20,7 +20,7 @@ export default async function ContactPage() {
   const site = await getSiteContent();
   const socials = buildSocialLinks(site);
   const quick = socials.filter((s) =>
-    ["instagram", "whatsapp", "telegram", "email"].includes(s.key),
+    ["phone", "whatsapp", "telegram", "email", "instagram"].includes(s.key),
   );
 
   const jsonLd = {

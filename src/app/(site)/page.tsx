@@ -112,6 +112,18 @@ export default async function HomePage() {
       ...(tel ? { telephone: tel } : {}),
       sameAs: sameAsLinks(site),
       ...(site.contactEmail ? { email: site.contactEmail } : {}),
+      ...(tel || site.contactEmail
+        ? {
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              ...(tel ? { telephone: tel } : {}),
+              ...(site.contactEmail ? { email: site.contactEmail } : {}),
+              areaServed: "GB",
+              availableLanguage: ["English"],
+            },
+          }
+        : {}),
     },
   ];
 

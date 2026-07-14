@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import { useRef } from "react";
 import { submitContactAction, type ContactState } from "@/lib/actions/contact";
@@ -112,6 +113,17 @@ export function ContactForm() {
           <p className="text-sm font-medium text-accent-ink">{state.message}</p>
         )}
       </div>
+
+      <p className="text-xs leading-relaxed text-stone">
+        By submitting this form, you agree to our{" "}
+        <Link
+          href="/privacy"
+          className="text-charcoal underline underline-offset-2 transition-colors hover:text-accent"
+        >
+          Privacy Policy
+        </Link>
+        .
+      </p>
     </form>
   );
 }

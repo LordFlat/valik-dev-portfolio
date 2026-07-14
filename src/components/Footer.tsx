@@ -52,7 +52,13 @@ export function Footer({ site }: { site: SiteContentData }) {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-xs text-stone sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 Valentyn Studio</span>
-          <span>Websites · Landing Pages · Simple Tools</span>
+          <div className="flex items-center gap-3">
+            <Link href="/privacy" className="transition-colors hover:text-charcoal">
+              Privacy Policy
+            </Link>
+            <span aria-hidden="true">·</span>
+            <span>Websites · Landing Pages · Simple Tools</span>
+          </div>
         </div>
       </div>
     </footer>

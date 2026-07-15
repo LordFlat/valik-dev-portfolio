@@ -24,14 +24,14 @@ export default function PrivacyPage() {
       <div className="mt-10 space-y-6 text-base leading-relaxed text-stone">
         <p>
           Valentyn Studio collects personal information such as your name, email address, phone
-          number and details about your website project when you submit an enquiry through our
-          website, Facebook or Instagram.
+          number, details about your website project and website-chat transcripts when you submit
+          an enquiry through our website, website assistant, Facebook or Instagram.
         </p>
 
         <div>
           <p>We use this information to:</p>
           <ul className="mt-3 list-disc space-y-1.5 pl-5">
-            <li>respond to your enquiry;</li>
+            <li>respond to your enquiry and review the context of your website chat;</li>
             <li>provide a website review or quotation;</li>
             <li>discuss and deliver requested services;</li>
             <li>maintain records relating to client enquiries and projects.</li>

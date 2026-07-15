@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getSiteContent } from "@/lib/queries";
+import { ChatWidget } from "@/components/ChatWidget";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <Navbar logoText={site.logoText} />
       <main className="flex-1">{children}</main>
       <Footer site={site} />
+      <ChatWidget />
     </div>
   );
 }

@@ -239,6 +239,12 @@ function isEmail(value: string) {
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [mobileLayout, setMobileLayout] = useState(false);
+  const [mobileViewport, setMobileViewport] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0,
+  });
   const [stage, setStage] = useState<Stage>("name");
   const [quickReplyContext, setQuickReplyContext] = useState<QuickReplyContext>("main");
   const [unknownCount, setUnknownCount] = useState(0);
@@ -295,21 +301,25 @@ export function ChatWidget() {
   useEffect(() => {
     if (!open || !mobileLayout) return;
 
-    const updateViewportHeight = () => {
-      const height = window.visualViewport?.height ?? window.innerHeight;
-      document.documentElement.style.setProperty("--chat-mobile-height", `${height}px`);
+    const updateMobileViewport = () => {
+      const viewport = window.visualViewport;
+      setMobileViewport({
+        top: Math.round(viewport?.offsetTop ?? 0),
+        left: Math.round(viewport?.offsetLeft ?? 0),
+        width: Math.round(viewport?.width ?? window.innerWidth),
+        height: Math.round(viewport?.height ?? window.innerHeight),
+      });
     };
 
-    updateViewportHeight();
-    window.visualViewport?.addEventListener("resize", updateViewportHeight);
-    window.visualViewport?.addEventListener("scroll", updateViewportHeight);
-    window.addEventListener("resize", updateViewportHeight);
+    updateMobileViewport();
+    window.visualViewport?.addEventListener("resize", updateMobileViewport);
+    window.visualViewport?.addEventListener("scroll", updateMobileViewport);
+    window.addEventListener("resize", updateMobileViewport);
 
     return () => {
-      window.visualViewport?.removeEventListener("resize", updateViewportHeight);
-      window.visualViewport?.removeEventListener("scroll", updateViewportHeight);
-      window.removeEventListener("resize", updateViewportHeight);
-      document.documentElement.style.removeProperty("--chat-mobile-height");
+      window.visualViewport?.removeEventListener("resize", updateMobileViewport);
+      window.visualViewport?.removeEventListener("scroll", updateMobileViewport);
+      window.removeEventListener("resize", updateMobileViewport);
     };
   }, [open, mobileLayout]);
 
@@ -566,26 +576,30 @@ export function ChatWidget() {
       className={`fixed z-[70] ${
         open
           ? mobileLayout
-            ? "inset-0"
+            ? ""
             : "bottom-6 right-6"
           : "bottom-4 right-4"
       }`}
+      style={
+        open && mobileLayout
+          ? {
+              top: `${mobileViewport.top}px`,
+              left: `${mobileViewport.left}px`,
+              width: mobileViewport.width ? `${mobileViewport.width}px` : "100vw",
+              height: mobileViewport.height ? `${mobileViewport.height}px` : "100dvh",
+              right: "auto",
+              bottom: "auto",
+            }
+          : undefined
+      }
     >
       {open && (
         <section
           className={`flex flex-col overflow-hidden bg-paper-soft shadow-[0_28px_90px_-28px_rgba(17,17,17,0.5)] ${
             mobileLayout
-              ? "w-screen rounded-none border-0"
+              ? "h-full w-full rounded-none border-0"
               : "mb-3 h-[min(620px,calc(100dvh-6rem))] w-[min(390px,calc(100vw-1.5rem))] rounded-[26px] border border-charcoal/10"
           }`}
-          style={
-            mobileLayout
-              ? {
-                  height: "var(--chat-mobile-height, 100dvh)",
-                  maxHeight: "var(--chat-mobile-height, 100dvh)",
-                }
-              : undefined
-          }
           role="dialog"
           aria-modal="true"
           aria-label="Valentyn Studio website assistant"

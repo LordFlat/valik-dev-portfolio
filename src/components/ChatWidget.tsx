@@ -256,9 +256,27 @@ export function ChatWidget() {
 
   useEffect(() => {
     if (!open) return;
+
+    const isMobile = window.matchMedia("(max-width: 639px)").matches;
+    if (isMobile) return;
+
     const timer = window.setTimeout(() => inputRef.current?.focus(), 120);
     return () => window.clearTimeout(timer);
   }, [open, stage]);
+
+  useEffect(() => {
+    if (!open || !window.matchMedia("(max-width: 639px)").matches) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousOverscroll = document.body.style.overscrollBehavior;
+    document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "none";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.overscrollBehavior = previousOverscroll;
+    };
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -509,15 +527,19 @@ export function ChatWidget() {
   const quickReplies = QUICK_REPLY_SETS[quickReplyContext];
 
   return (
-    <div className="fixed bottom-4 right-4 z-[70] sm:bottom-6 sm:right-6">
+    <div
+      className={`fixed z-[70] sm:bottom-6 sm:right-6 ${
+        open ? "inset-0 sm:inset-auto" : "bottom-4 right-4"
+      }`}
+    >
       {open && (
         <section
-          className="mb-3 flex h-[min(620px,calc(100dvh-6rem))] w-[min(390px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[26px] border border-charcoal/10 bg-paper-soft shadow-[0_28px_90px_-28px_rgba(17,17,17,0.5)] max-sm:h-[calc(100dvh-5.5rem)]"
+          className="flex h-[100dvh] w-screen flex-col overflow-hidden border-0 bg-paper-soft shadow-[0_28px_90px_-28px_rgba(17,17,17,0.5)] sm:mb-3 sm:h-[min(620px,calc(100dvh-6rem))] sm:w-[min(390px,calc(100vw-1.5rem))] sm:rounded-[26px] sm:border sm:border-charcoal/10"
           role="dialog"
-          aria-modal="false"
+          aria-modal="true"
           aria-label="Valentyn Studio website assistant"
         >
-          <header className="flex items-center justify-between border-b border-line bg-paper px-4 py-3.5">
+          <header className="flex shrink-0 items-center justify-between border-b border-line bg-paper px-4 pb-3.5 pt-[max(0.875rem,env(safe-area-inset-top))] sm:py-3.5">
             <div className="flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-full bg-charcoal text-sm font-semibold text-paper-soft">
                 VS
@@ -544,7 +566,7 @@ export function ChatWidget() {
 
           <div
             ref={scrollRef}
-            className="no-scrollbar flex-1 space-y-3 overflow-y-auto bg-paper-deep/60 px-4 py-4"
+            className="no-scrollbar min-h-0 flex-1 space-y-3 overflow-y-auto bg-paper-deep/60 px-4 py-4"
             aria-live="polite"
           >
             <p className="text-center text-[10px] font-medium uppercase tracking-[0.16em] text-stone/70">
@@ -590,7 +612,7 @@ export function ChatWidget() {
             )}
           </div>
 
-          <div className="border-t border-line bg-paper-soft p-3.5">
+          <div className="shrink-0 border-t border-line bg-paper-soft px-3.5 pb-[max(0.875rem,env(safe-area-inset-bottom))] pt-3.5 sm:p-3.5">
             {stage === "main" && (
               <div className="mb-3 grid grid-cols-2 gap-2">
                 {quickReplies.map((reply) => (
@@ -618,7 +640,7 @@ export function ChatWidget() {
                 aria-label={placeholder}
                 placeholder={placeholder}
                 maxLength={stage === "email" ? 160 : 1000}
-                className="min-w-0 flex-1 rounded-full border border-charcoal/15 bg-paper px-4 py-3 text-sm text-charcoal placeholder:text-stone/65 outline-none transition focus:border-charcoal focus:ring-2 focus:ring-charcoal/10 disabled:cursor-not-allowed disabled:opacity-60"
+                className="min-w-0 flex-1 rounded-full border border-charcoal/15 bg-paper px-4 py-3 text-base text-charcoal placeholder:text-stone/65 outline-none transition focus:border-charcoal focus:ring-2 focus:ring-charcoal/10 disabled:cursor-not-allowed disabled:opacity-60 sm:text-sm"
               />
               <button
                 type="submit"
@@ -644,7 +666,7 @@ export function ChatWidget() {
         </section>
       )}
 
-      <div className="flex items-center justify-end gap-2">
+      <div className={`items-center justify-end gap-2 ${open ? "hidden sm:flex" : "flex"}`}>
         {!open && (
           <button
             type="button"

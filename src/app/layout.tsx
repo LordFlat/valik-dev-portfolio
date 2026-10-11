@@ -40,7 +40,13 @@ export async function generateMetadata(): Promise<Metadata> {
       "small business websites West Midlands",
       "freelance web designer Cotswolds",
     ],
-    icons: { icon: "/favicon.svg" },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+      ],
+      apple: "/apple-touch-icon.png",
+    },
     alternates: { canonical: "/" },
     openGraph: {
       title,

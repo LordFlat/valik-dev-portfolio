@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { SiteContentData } from "@/lib/queries";
 import { buildSocialLinks } from "@/lib/social";
 import { SocialLinks } from "@/components/site/SocialLinks";
-import { Wordmark } from "@/components/site/Wordmark";
+import { Logo } from "@/components/site/Logo";
 
 const nav = [
   { href: "/projects", label: "Work" },
@@ -19,8 +19,8 @@ export function Footer({ site }: { site: SiteContentData }) {
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2">
           <div className="max-w-sm">
-            <Link href="/" className="text-xl font-semibold text-charcoal">
-              <Wordmark text={site.logoText} />
+            <Link href="/" className="inline-block text-charcoal" aria-label={`${site.logoText} — home`}>
+              <Logo text={site.logoText} />
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-stone">
               Clean websites, landing pages, and simple digital tools that help small
